@@ -1,0 +1,34 @@
+<div id="app">
+  <h1>Listado de actividades</h1>
+    <ol>
+      <li v-for="actividad in actividades">
+        {{actividad}}
+      </li>
+    </ol>
+    Nueva actividad:<input type="text" v-on:keyup.enter="actualizarLista" v-model="actividad" placeholder="Enter para confirmar">
+
+
+
+     <table border="1" v-if="articulos.length !=0">
+      <tr><td>Código</td><td>Descripción</td><td>Precio</td></tr>
+      <template v-for="articulo in articulos">
+      <tr>
+        <td>{{articulo.codigo}}</td>
+        <td>{{articulo.descripcion}}</td>
+        <td>{{articulo.precio}}</td>
+      </tr>
+    </template>
+    </table>    
+    <form v-on:submit.prevent="agregarArticulo">
+      <p>
+        Ingrese código:<input type="number" v-model="codigo">
+      </p>
+      <p>
+        Ingrese descripción:<input type="text" v-model="descripcion">
+      </p>
+      <p>
+        Ingrese precio:<input type="text" v-model="precio">
+      </p>
+      <p><input type="submit" value="Agregar"></p>
+    </form>
+</div>
